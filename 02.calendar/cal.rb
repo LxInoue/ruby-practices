@@ -26,18 +26,20 @@ unless (1..12).cover?(month)
   abort("エラー：-mは1〜12の範囲で指定してください。")
 end
 
+first_date = Date.new(year, month, 1)
+last_date  = Date.new(year, month, -1)
+
 puts "#{month}月 #{year}".center(20)
 puts "日 月 火 水 木 金 土"
-display_date = Date.new(year, month, 1)
-print "   " * display_date.wday
-last_day = Date.new(year, month, -1).day
-(1..last_day).each do |day|
-  if today == display_date
+print "   " * first_date.wday
+
+(first_date..last_date).each do |current_date|
+  day = current_date.day
+  if today == current_date
     print "\e[7m" + day.to_s.rjust(2) + "\e[0m "
   else
     print day.to_s.rjust(2) + " "
   end
-  display_date = display_date.next
-  puts if display_date.sunday?
+  puts if current_date.saturday?
 end
 puts
