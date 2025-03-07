@@ -22,12 +22,10 @@ end
 unless (1970..2100).cover?(year)
   abort("エラー：-yは1970〜2100の範囲で指定してください。")
 end
-
-begin
-  first_date = Date.new(year, month, 1)
-rescue ArgumentError
-  abort("エラー：不正な年または月が指定されました。")
+unless (1..12).cover?(month)
+  abort("エラー：-mは1〜12の範囲で指定してください。")
 end
+first_date = Date.new(year, month, 1)
 
 puts "#{first_date.month}月 #{first_date.year}".center(20)
 puts "日 月 火 水 木 金 土"
