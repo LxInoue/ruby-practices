@@ -7,7 +7,7 @@ year = Date.today.year
 month = Date.today.month
 
 # オプションの読み込みと入力チェック
-opt =OptionParser.new
+opt = OptionParser.new
 opt.on("-y YEAR", Integer, "年を指定（例：2025）") { |y| year = y }
 opt.on("-m MONTH", Integer, "月を指定（例：3）") { |m| month = m }
 begin
