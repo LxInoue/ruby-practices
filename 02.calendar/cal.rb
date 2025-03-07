@@ -19,7 +19,7 @@ rescue OptionParser::InvalidArgument => e
   exit 1
 end
 # UNIXエポックタイムに基づき1970年以前をサポートしない。また、上限を設けるために2100年を設定している。
-unless (1970..2100).include?(year)
+unless (1970..2100).cover?(year)
   abort("エラー：-yは1970〜2100の範囲で指定してください。")
 end
 
