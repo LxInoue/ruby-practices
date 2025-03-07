@@ -2,9 +2,9 @@
 
 require "date"
 require "optparse"
-
-year = Date.today.year
-month = Date.today.month
+today = Date.today
+year = today.year
+month = today.month
 
 # オプションの読み込みと入力チェック
 opt = OptionParser.new
@@ -42,7 +42,7 @@ print "   " * first_date.wday
 last_day = Date.new(first_date.year, first_date.month, -1).day
 display_date = first_date
 (1..last_day).each do |day|
-  if Date.today == display_date
+  if today == display_date
     # 今日の日付の場合は反転表示させる。
     print "\e[7m" + day.to_s.rjust(2) + "\e[0m "
   else
