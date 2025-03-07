@@ -25,15 +25,12 @@ end
 unless (1..12).cover?(month)
   abort("エラー：-mは1〜12の範囲で指定してください。")
 end
-first_date = Date.new(year, month, 1)
 
-puts "#{first_date.month}月 #{first_date.year}".center(20)
+puts "#{month}月 #{year}".center(20)
 puts "日 月 火 水 木 金 土"
-
-print "   " * first_date.wday
-
-last_day = Date.new(first_date.year, first_date.month, -1).day
-display_date = first_date
+display_date = Date.new(year, month, 1)
+print "   " * display_date.wday
+last_day = Date.new(year, month, -1).day
 (1..last_day).each do |day|
   if today == display_date
     print "\e[7m" + day.to_s.rjust(2) + "\e[0m "
