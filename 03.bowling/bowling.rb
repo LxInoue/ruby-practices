@@ -12,15 +12,15 @@ current_idx = 0
 9.times do
   if shots[current_idx] == 10
     # ストライク：次のフレームの2投分をボーナスとして加算。2投目は投げない。
-    point += (10 + shots[current_idx + 1] + shots[current_idx + 2])
+    point += shots[current_idx..(current_idx + 2)].sum
     current_idx += 1
   elsif shots[current_idx] + shots[current_idx + 1] == 10
     # スペア：次のフレームの1投分をボーナスとして加算
-    point += (10 + shots[current_idx + 2])
+    point += shots[current_idx..(current_idx + 2)].sum
     current_idx += 2
   else
     # 通常：2投分の合計
-    point += (shots[current_idx] + shots[current_idx + 1])
+    point += shots[current_idx..(current_idx + 1)].sum
     current_idx += 2
   end
 end
